@@ -1,0 +1,16 @@
+|{% extends "redesenho/pagina.html" %} 
+|{% block include_head_template %}
+//- HEADER
+//- mixins
+head
+    //include mixin/util.pug
+    include includes/header.pug
+|{% endblock include_head_template %} 
+
+//- MAIN
+|{% block mainContent %}
+body
+    include componentes/main.pug
+    //-img(src='../img/dbz.jpg')
+    include includes/footer.pug
+|{% endblock %}

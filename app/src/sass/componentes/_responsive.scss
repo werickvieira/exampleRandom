@@ -1,0 +1,40 @@
+
+/*
++--------------------------------------------------+
+ SMARTPHONE
++--------------------------------------------------+
+*/
+
+@media (max-width: 767px) {}
+@media (max-width: 767px) and (orientation: landscape){}
+@media (max-width: 480px) {}
+@media (min-width: 481px) and (max-width: 767px) and (orientation: landscape){}
+
+
+/*
++--------------------------------------------------+
+ TABLET
++--------------------------------------------------+
+*/
+
+@media (min-width: 768px) and (max-width: 992px){}
+@media (min-width: 768px) and (orientation: landscape){}
+@media (min-width: 768px) and (orientation: portrait){}
+
+
+/*
++--------------------------------------------------+
+ DESKTOP
++--------------------------------------------------+
+*/
+
+@media (min-width: 768px){}
+
+// Medium
+@media (min-width: 992px){}  
+
+// Large 
+@media (min-width: 1200px){} 
+
+
+

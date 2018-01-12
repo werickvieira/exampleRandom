@@ -1,0 +1,98 @@
+html,
+body,
+#infoarte,
+main{
+	height: 100%;
+}
+.g-container{
+	max-width: $widthContainer;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+}
+
+// .g-main{
+// 	// $s3URL É uma variável dinamica, que guarda a URL de ambiente
+// 	background-image: url(#{$s3URL}/img/vader.jpg);
+// 	background-size:cover;
+// 	height: 100%;
+// 	background-position: 50%;
+// }
+
+// .g-left{
+// 	float:left;
+// };
+
+// .g-right{
+// 	float: right;
+// };
+
+// .g-text-center{
+// 	text-align: center;
+// };
+
+
+// .g-lowercase{
+// 	text-transform: lowercase !important;
+// }
+
+// .g-embed{
+// 	display: block;
+// 	height: 0;
+// 	padding-bottom: 56.25%;
+// 	overflow: hidden;
+// 	video,
+// 	iframe,
+// 	embed{
+// 		position: absolute;
+// 		top: 0;
+// 		bottom: 0;
+// 		left: 0;
+// 		width: 100%;
+// 		height: 100%;
+// 		border: 0;
+// 	}
+// }
+
+// .g-clearfix{
+// 	&:after,
+// 	&:before{
+// 		display: table;
+// 		content: " ";
+// 	}
+// }
+
+// body #sticker{
+//   z-index: 100000000000000000000000000000;
+//   position: relative !important;
+// }
+// body #menu-editoria{
+//   z-index: 100000000000000000000000000000;
+// }
+
+// /* TIRA O TÍTULO E SUBTÍTULO DA PÁGINA */
+// body .head-materia{
+//   height: 0;
+//   overflow: hidden;
+// }
+// body #all_banner{
+//   height: 0 !important;
+//   overflow: hidden  !important;
+//   padding: 0  !important;
+//   border: none  !important;
+//   background: none  !important;
+//   margin: 0  !important;
+// }
+// body article+.row{
+//   display: none;
+// }
+// body article .row:nth-child(1){
+//   display: none;
+// }
+
+
+
+
+
