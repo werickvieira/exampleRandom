@@ -6,10 +6,6 @@ const initRandom = (data) => {
 	return newData;
 };
 
-const getDataRandom = () => (
-	newData
-);
-
 const controlRandom = (data) => {
 	const itensRandom = randomItens(data, 10);
 	const mount = mountAssociateItens(itensRandom, data);
@@ -74,6 +70,10 @@ const randomAssociate = (currAssociate, itens) => {
 		return elements;
 	}
 };
+
+const getDataRandom = () => (
+	newData
+);
 
 // Funcoes abaixo vão para outro módulo
 const modifyData = (itens) => (
