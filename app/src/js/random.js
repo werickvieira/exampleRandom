@@ -3,32 +3,12 @@ const newData = [];
 
 const initRandom = (data) => {
 	controlRandom(modifyData(data));
+	return newData;
 };
 
-const getDataRandom = () => {
-	return new Promise(controlChechData);
-};	
-
-const controlChechData = (resolve, reject) => {
-	checkData().then((e) => {
-		console.log("eXS", e);
-		resolve(e);
-	})
-		.catch(() => {
-			controlChechData(resolve, reject);
-		});
-};
-
-const checkData = () => {
-	return new Promise((resolve, reject) => {
-		if (newData.length === 0) {
-			reject();
-		} else {
-			console.log("RESOLVE", newData.length);
-			resolve(newData);
-		}	
-	});
-};
+const getDataRandom = () => (
+	newData
+);
 
 const controlRandom = (data) => {
 	const itensRandom = randomItens(data, 10);
@@ -95,6 +75,7 @@ const randomAssociate = (currAssociate, itens) => {
 	}
 };
 
+// Funcoes abaixo vão para outro módulo
 const modifyData = (itens) => (
 	itens.map((e) => {
 		e['caracteristica'] = e['caracteristica'].split(",").map(removeSpace);

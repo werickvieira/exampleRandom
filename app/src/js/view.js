@@ -1,11 +1,8 @@
-import { getDataRandom } from './random';
-
-const initView = () => {
-	const data = getDataRandom();
-	console.log("DATA", data)
-	data.then((e) => {
-		console.log("EA", e.length);
-	})
+const initView = (data) => {
+	console.log("initView");
+	data.forEach((item) => {
+		console.log("item", item);
+	});
 };
 
 export {

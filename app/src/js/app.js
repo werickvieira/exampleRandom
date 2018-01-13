@@ -4,8 +4,9 @@ import initView from './view';
 import initRandom from './random';
 
 const initApp = () => {
-	csvToJSON.then(initRandom);
-	initView();
+	csvToJSON
+		.then(initRandom)
+		.then(initView);
 };
 
 
