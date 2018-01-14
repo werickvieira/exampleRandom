@@ -1,17 +1,6 @@
 let counter = 0;
 const newData = [];
 
-const initRandom = (data) => {
-	controlRandom(modifyData(data));
-	return newData;
-};
-
-const controlRandom = (data) => {
-	const itensRandom = randomItens(data, 10);
-	const mount = mountAssociateItens(itensRandom, data);
-	newData.push(mount);
-};
-
 const randomItens = (itens,	quantity) => {
 	const amount = itens.length;
 	const arritens = [];
@@ -25,37 +14,14 @@ const randomItens = (itens,	quantity) => {
 	return arritens;
 };
 
-const mountAssociateItens = (selectedItens, itens) => {
-	return selectedItens.reduce((prev, curr, i) => {
-		const id = Math.round(Date.now() * (i+1) / 1000);
-		curr['correctAnswer'] = id;
-		controlAssociate(curr, itens, prev);
-		return prev;
-	}, {});
-};
-
-const controlAssociate = (curr, itens, obj) => {
-	findAssociate(curr, itens, obj);
-};
-
-const findAssociate = (curr, itens, obj) => {
-	const value = randomAssociate(curr, itens);
-	if (!value) {
-		findAssociate(curr, itens, obj);
-	} else {
-		obj[curr.jogador] = [];
-		obj[curr.jogador].push(shuffle(value.concat(curr)));
-	}
-};
-
 const randomAssociate = (currAssociate, itens) => {
 	const elements = randomItens(itens, 2);
 	const isCharacter = currAssociate.caracteristica.filter(i => { 
-		return elements.every((e) => {
-			if (currAssociate.jogador === e.jogador) {
+		return elements.every(({ jogador, caracteristica }) => {
+			if (currAssociate.jogador === jogador) {
 				return false;
 			}
-			return e.caracteristica.indexOf(i) > -1;
+			return caracteristica.indexOf(i) > -1;
 		});
 	});
 
@@ -70,6 +36,37 @@ const randomAssociate = (currAssociate, itens) => {
 		return elements;
 	}
 };
+
+const findAssociate = (curr, itens, obj) => {
+	const value = randomAssociate(curr, itens);
+	if (!value) {
+		findAssociate(curr, itens, obj);
+	} else {
+		obj[curr.jogador] = [];
+		obj[curr.jogador].push(shuffle(value.concat(curr)));
+	}
+};
+
+const mountAssociateItens = (selectedItens, itens) => {
+	return selectedItens.reduce((prev, curr, i) => {
+		const id = Math.round(Date.now() * (i+1) / 1000);
+		curr['correctAnswer'] = id;
+		findAssociate(curr, itens, prev);
+		return prev;
+	}, {});
+};
+
+const initRandom = (data) => {
+	controlRandom(modifyData(data));
+	return newData;
+};
+
+const controlRandom = (data) => {
+	const itensRandom = randomItens(data, 10);
+	const mount = mountAssociateItens(itensRandom, data);
+	newData.push(mount);
+};
+
 
 const getDataRandom = () => (
 	newData
