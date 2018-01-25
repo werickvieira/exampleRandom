@@ -1,20 +1,41 @@
 section#infoarte
     //
-        +----------------------+
-          HEADER
-        +----------------------+
+      +----------------------+
+        HEADER
+      +----------------------+
     header.g-header
-        h1 TESTE WEB
     //- /.g-header
     //
-        +----------------------+
-          MAIN
-        +----------------------+
+      +----------------------+
+        MAIN
+      +----------------------+
     main
-        div.g-main
-            div.g-main__item
-            //- ./g-main__item                
-        //- /.g-main
+      div.g-container.g-intro
+        section.g-block
+          div.g-block__item(color='yellow')
+          div.g-block__item(color='lilac')
+          div.g-block__item(color='blue')
+          div.g-block__item(color='yellow')
+          div.g-block__item(color='orange')
+          div.g-block__item(color='green')
+          div.g-block__item(color='yellow').g-xs-hidden
+          div.g-block__item(color='lilac').g-xs-hidden
+          div.g-block__item(color='blue').g-xs-hidden
+          div.g-block__item(color='yellow').g-xs-hidden
+          div.g-block__item(color='orange').g-xs-hidden
+          div.g-block__item(color='green').g-xs-hidden
+          div.g-block__item(color='yellow').g-xs-hidden
+          div.g-block__item(color='lilac').g-xs-hidden
+          div.g-block__item(color='blue').g-xs-hidden
+        //- /.g-block
+        section.g-block__overlay
+          h2 Copa Cabeluda
+        //- /.g-block__overlay
+      div.g-main
+        div.g-main__item
+        //- ./g-main__item                
+      //- /.g-main
+
     //- /main    
 //- /#infoarte
 

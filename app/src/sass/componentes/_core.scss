@@ -1,21 +1,71 @@
 
 #infoarte{
-  /*
-  +-------------------------------+
-   HEADER
-  +-------------------------------+
-  */
-	header{} 
-
-  /*
-  +-------------------------------+
-   MAIN
-  +-------------------------------+
-  */
-  main{}
-
+  main{
+    @media(min-width:992px){
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .g-intro{
+      .g-block{
+        display: flex;
+        width: auto;
+        flex-flow: wrap row;
+        margin-right: -10px;
+        margin-left: -10px;
+        .g-block__item{
+          min-width: 160px;
+          max-width: 256px;
+          min-height: 190px;
+          flex: 1 0 33%;
+          transition: background-color .6s ease;
+          will-change: transition;
+          // background-color: black;
+          @media(min-width:768px){
+            min-width: 256px;
+            min-height: 300px;
+          }
+          // &:nth-of-type(1){ background-color: $yellow }
+          // &:nth-of-type(2){ background-color: $lilac }
+          // &:nth-of-type(3){ background-color: $blue }
+          // &:nth-of-type(4){ background-color: $yellow }
+          // &:nth-of-type(5){ background-color: $orange }
+          // &:nth-of-type(6){ background-color: $green }
+          // &:nth-of-type(7){ background-color: $yellow }
+          // &:nth-of-type(8){ background-color: $lilac }
+          // &:nth-of-type(9){ background-color: $blue }
+          // &:nth-of-type(10){ background-color: $yellow }
+          // &:nth-of-type(11){ background-color: $orange }
+          // &:nth-of-type(12){ background-color: $green }
+          // &:nth-of-type(13){ background-color: $yellow }
+          // &:nth-of-type(14){ background-color: $lilac }
+          // &:nth-of-type(15){ background-color: $blue }
+          &.g-xs-hidden{
+            display: none;
+            @media(min-width:768px){
+              display: block;
+            }
+          }
+        }
+      }
+      .g-block__overlay{
+        position: absolute;
+        width: 100%;
+        max-width: 440px;
+        // min-height: 190px;
+        height: auto;
+        border: 2px solid #fff;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        @media(min-width:768px){
+          min-height: 300px;
+          height: auto;
+        }
+      }
+    }
+  }
 }
-
 
 
 

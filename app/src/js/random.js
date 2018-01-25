@@ -42,31 +42,28 @@ const findAssociate = (curr, itens, obj) => {
 	if (!value) {
 		findAssociate(curr, itens, obj);
 	} else {
-		obj[curr.jogador] = [];
-		obj[curr.jogador].push(shuffle(value.concat(curr)));
+		obj[curr.correctAnswer] = [];
+		obj[curr.correctAnswer].push(shuffle(value.concat(curr)));
 	}
 };
 
-const mountAssociateItens = (selectedItens, itens) => {
-	return selectedItens.reduce((prev, curr, i) => {
+const mountAssociateItens = (selectedItens, itens) => (
+	selectedItens.reduce((prev, curr, i) => {
 		const id = Math.round(Date.now() * (i+1) / 1000);
 		curr['correctAnswer'] = id;
 		findAssociate(curr, itens, prev);
 		return prev;
-	}, {});
+	}, {})
+);
+
+const controlRandom = (data) => {
+	newData.push(mountAssociateItens(randomItens(data, 10), data));
 };
 
 const initRandom = (data) => {
 	controlRandom(modifyData(data));
 	return newData;
 };
-
-const controlRandom = (data) => {
-	const itensRandom = randomItens(data, 10);
-	const mount = mountAssociateItens(itensRandom, data);
-	newData.push(mount);
-};
-
 
 const getDataRandom = () => (
 	newData
@@ -90,3 +87,6 @@ export {
 	initRandom as default,
 	getDataRandom
 };
+
+
+// const pipe = (...fns) => (x) => fns.reduce((prev, func) => func(prev), x);
