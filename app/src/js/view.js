@@ -1,21 +1,27 @@
-// import isMobile from './modulos/checkMobileDevice';
-// const setHeightMobile = () => {
-//   const winH = window.innerHeight;
-//   const cliH = document.querySelector('.g-block').clientHeight;
-//   const itens = document.querySelectorAll(".g-block__item");
-//   const minH = 190;
+import isMobile from './modulos/checkMobileDevice';
 
-//   itens.forEach((item) => {
-//     item.style.height = ( (winH - cliH) / 2 +  minH )+ 'px';
-//   });
-// };
 
-const allItens = document.querySelectorAll('.g-block__item');
 const isArr = [];
+const mobile = isMobile(700);
+const queryItens = mobile ? '.g-block__item:not(.g-xs-hidden)' : '.g-block__item';
+const allItens = document.querySelectorAll(queryItens);
+
+const setHeightMobile = () => {
+  const winH = window.innerHeight;
+  const cliH = document.querySelector('.g-block').clientHeight;
+  const minH = 190;
+  const diff = winH - cliH;
+  if (diff > 0) {
+    allItens.forEach((item) => {
+      const el = item;
+      el.style.height = `${((diff / 2) + minH)}px`;
+    });
+  }
+};
 
 const randomBoxIntro = (itens) => {
   let isDiff = false;
-  const range = 5; // De acordo com dispositivo
+  const range = mobile ? 2 : 5;
   const colors = ['yellow', 'lilac', 'blue', 'orange', 'green'];
   while (!isDiff) {
     const randomItem = itens[Math.floor((Math.random() * itens.length))];
@@ -51,14 +57,16 @@ const controlRandomBoxIntro = () => {
 
 const initIntro = () => {
   if (isArr.length <= 4) {
-    setTimeout(controlRandomBoxIntro, 3000);
+    setTimeout(controlRandomBoxIntro, 1000);
     // window.requestAnimationFrame(controlRandomBoxIntro);
   }
 };
 
 const initView = (data) => {
   initIntro();
-  // isMobile(800) ? setHeightMobile() : null;
+  if (mobile) {
+    setHeightMobile();
+  }
   console.log('data', data[0]);
   // data.forEach((item) => {
   //  console.log("item", item);
