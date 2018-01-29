@@ -9,7 +9,7 @@
   "extends": "airbnb-base",
   "rules": {
     "no-use-before-define": [1, { "variables": true }],
-    "no-continue": [1]
+    "no-continue": [1],
   },
   "parserOptions": {
     "ecmaVersion": 6,
