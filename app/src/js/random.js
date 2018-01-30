@@ -40,22 +40,20 @@ const randomAssociate = (currAssociate, itens) => {
 };
 
 const findAssociate = (curr, itens, obj) => {
-  const item = obj;
   const value = randomAssociate(curr, itens);
   if (!value) {
-    findAssociate(curr, itens, item);
+    findAssociate(curr, itens, obj);
   } else {
-    item[curr.correctAnswer] = [];
-    item[curr.correctAnswer].push(shuffle(value.concat(curr)));
+    obj[curr.correctAnswer] = [];
+    obj[curr.correctAnswer].push(shuffle(value.concat(curr)));
   }
 };
 
 const mountAssociateItens = (selectedItens, itens) => (
   selectedItens.reduce((prev, curr, i) => {
-    const item = curr;
     const id = Math.round((Date.now() * (i + 1)) / 1000);
-    item.correctAnswer = id;
-    findAssociate(item, itens, prev);
+    curr.correctAnswer = id;
+    findAssociate(curr, itens, prev);
     return prev;
   }, {})
 );

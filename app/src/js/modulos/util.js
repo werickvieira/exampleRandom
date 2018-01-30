@@ -65,8 +65,8 @@ const ordernaDados = (lista, objeto, direcao) => (
 
 const removeAtributo = (target, attr) => {
   Array.prototype.filter.call(target.parentNode.children, (child) => {
-    if (child !== target) {
-      child.getAttribute(attr) !== '' ? child.removeAttribute(attr) : '';
+    if (child !== target && child.getAttribute(attr)) {
+      child.removeAttribute(attr);
     }
   });
 };
@@ -112,11 +112,23 @@ const scrollToTop = () => {
   }
 };
 
+/**
+ *
+ */
+
 const convertToCamel = s => s.replace(/(\s\w)/g, m => m[1].toUpperCase());
+
+/**
+ *
+ */
 
 const shuffle = arr => (
   arr.sort(() => 0.5 - Math.random())
 );
+
+/**
+ *
+ */
 
 const removeSpace = s => s.replace(/\s+/, '');
 
@@ -128,11 +140,11 @@ const removeSpace = s => s.replace(/\s+/, '');
 
 const converteDadosPlanilha = (e) => {
   if (!e) {
-    return;
+    return false;
   }
   const DATA = e;
   const KEYS = DATA[0];
-  const EMPTY_ROW = '(^-$)'; // -
+  const EMPTY_ROW = '(^-$)';
 
   const DADOS = DATA.filter((item, index, arr) => arr.indexOf(KEYS) !== index);
   const RETORNO = DADOS.reduce((prev, curr) => {
