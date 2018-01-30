@@ -2,6 +2,7 @@ import { shuffle, removeSpace } from './modulos/util';
 
 let counter = 0;
 const newData = [];
+const groupCharacter = [];
 
 const randomItens = (itens, quantity) => {
   const amount = itens.length;
@@ -17,7 +18,8 @@ const randomItens = (itens, quantity) => {
   return arritens;
 };
 
-const randomAssociate = (currAssociate, itens) => {
+const randomAssociate = (currAssociate, allItens) => {
+  const itens = groupCharacter[0][currAssociate.caracteristica[0]];
   const elements = randomItens(itens, 2);
   const isCharacter = currAssociate.caracteristica.filter(i => (
     elements.every(({ jogador, caracteristica }) => {
@@ -30,7 +32,7 @@ const randomAssociate = (currAssociate, itens) => {
 
   if (counter >= 1000) {
     counter = 0;
-    return elements;
+    return randomItens(allItens, 2);
   } else if (isCharacter.length <= 0) {
     counter += 1;
     return false;
@@ -70,8 +72,19 @@ const modifyData = itens => (
   })
 );
 
+const groupByCharacter = (data) => {
+  const itens = data.reduce((prev, curr) => {
+    prev[curr.caracteristica[0]] = prev[curr.caracteristica[0]] || [];
+    prev[curr.caracteristica[0]].push(curr);
+    return prev;
+  }, {});
+  groupCharacter.push(itens);
+};
+
 const initRandom = (data) => {
-  controlRandom(modifyData(data));
+  const itens = modifyData(data);
+  groupByCharacter(itens);
+  controlRandom(itens);
   return newData;
 };
 
