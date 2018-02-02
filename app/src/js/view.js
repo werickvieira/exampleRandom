@@ -1,5 +1,6 @@
 import isMobile from './modulos/checkMobileDevice';
 
+// const k = require.context('../img/introducao/', true, /^\.\/.*\.svg/);
 
 const isArr = [];
 const mobile = isMobile(700);
@@ -16,6 +17,17 @@ const setHeightMobile = () => {
       const el = item;
       el.style.height = `${((diff / 2) + minH)}px`;
     });
+  }
+};
+
+const setBackgroundImg = (arg, item) => {
+  if (!arg) {
+    allItens.forEach((el) => {
+      const attr = el.getAttribute('data-img');
+      el.style.backgroundImage = `url(${attr})`;
+    });
+  } else {
+    item.style.backgroundImage = `url(${arg})`;
   }
 };
 
@@ -44,6 +56,8 @@ const randomBoxIntro = (itens) => {
     } else {
       isArr.push(randomItem);
       isDiff = true;
+      const imgURL = `img/introducao/${randomColor}/${Math.floor((Math.random() * 10) + 1)}.svg`;
+      setBackgroundImg(imgURL, randomItem);
       randomItem.setAttribute('color', randomColor);
     }
   }
