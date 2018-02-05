@@ -12,36 +12,128 @@ section#infoarte
     main
       div.g-container.g-intro
         section.g-block
-          div.g-block__item(color='yellow', style='background-image:url(../img/1.svg)' )
+          div.g-block__item(color='yellow', data-img='' style=`background-image:url(${s3Link}img/1.svg)` )
             //-img(src="../img/1.svg")
-          div.g-block__item(color='lilac',  style='background-image:url(../img/2.svg)' )
+          div.g-block__item(color='lilac',  data-img='' style=`background-image:url(${s3Link}img/2.svg)` )
             //-img(src="../img/2.svg")
-          div.g-block__item(color='blue',   style='background-image:url(../img/3.svg)')
+          div.g-block__item(color='blue',   data-img='' style=`background-image:url(${s3Link}img/3.svg)`)
             //-img(src="../img/3.svg")
-          div.g-block__item(color='yellow', style='background-image:url(../img/4.svg)')
+          div.g-block__item(color='yellow', data-img='' style=`background-image:url(${s3Link}img/4.svg)`)
             //-img(src="../img/4.svg")
-          div.g-block__item(color='orange', style='background-image:url(../img/5.svg)')
+          div.g-block__item(color='orange', data-img='' style=`background-image:url(${s3Link}img/5.svg)`)
             //-img(src="../img/5.svg")
-          div.g-block__item(color='green',  style='background-image:url(../img/6.svg)')
+          div.g-block__item(color='green',  data-img='' style=`background-image:url(${s3Link}img/6.svg)`)
             //-img(src="../img/6.svg")
-          div.g-block__item(color='yellow', style='background-image:url(../img/7.svg)').g-xs-hidden
+          div.g-block__item(color='yellow', data-img='' style=`background-image:url(${s3Link}img/7.svg)`).g-xs-hidden
             //-img(src="../img/7.svg")
-          div.g-block__item(color='lilac',  style='background-image:url(../img/8.svg)').g-xs-hidden
+          div.g-block__item(color='lilac',  data-img='' style=`background-image:url(${s3Link}img/8.svg)`).g-xs-hidden
             //-img(src="../img/8.svg")
-          div.g-block__item(color='blue',   style='background-image:url(../img/9.svg)').g-xs-hidden
+          div.g-block__item(color='blue',   data-img='' style=`background-image:url(${s3Link}img/9.svg)`).g-xs-hidden
             //-img(src="../img/9.svg")
-          div.g-block__item(color='yellow', style='background-image:url(../img/10.svg)').g-xs-hidden
+          div.g-block__item(color='yellow', data-img='' style=`background-image:url(${s3Link}img/10.svg)`).g-xs-hidden
             //-img(src="../img/10.svg")
-          div.g-block__item(color='orange', style='background-image:url(../img/11.svg)').g-xs-hidden
+          div.g-block__item(color='orange', data-img='' style=`background-image:url(${s3Link}img/11.svg)`).g-xs-hidden
             //-img(src="../img/11.svg")
-          div.g-block__item(color='green',  style='background-image:url(../img/12.svg)').g-xs-hidden
+          div.g-block__item(color='green',  data-img='' style=`background-image:url(${s3Link}img/12.svg)`).g-xs-hidden
             //-img(src="../img/12.svg")
-          div.g-block__item(color='yellow', style='background-image:url(../img/13.svg)').g-xs-hidden.g-md-hidden
+          div.g-block__item(color='yellow', data-img='' style=`background-image:url(${s3Link}img/13.svg)`).g-xs-hidden.g-md-hidden
             //-img(src="../img/13.svg")
-          div.g-block__item(color='lilac',  style='background-image:url(../img/14.svg)').g-xs-hidden.g-md-hidden
+          div.g-block__item(color='lilac',  data-img='' style=`background-image:url(${s3Link}img/14.svg)`).g-xs-hidden.g-md-hidden
             //-img(src="../img/14.svg")
-          div.g-block__item(color='blue',   style='background-image:url(../img/15.svg)').g-xs-hidden.g-md-hidden
+          div.g-block__item(color='blue',   data-img='' style=`background-image:url(${s3Link}img/15.svg)`).g-xs-hidden.g-md-hidden
             //-img(src="../img/15.svg")
+        //- /.g-block
+        //- section.g-block
+          div.g-block__item(color='yellow')
+            div.g-block__item__front
+              img(src="../img/1.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/orange/12.svg")
+          // .g-block__item
+          div.g-block__item(color='lilac')
+            div.g-block__item__front
+              img(src="../img/2.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/green/9.svg")
+          // .g-block__item
+          div.g-block__item(color='blue')
+            div.g-block__item__front
+              img(src="../img/3.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/yellow/3.svg")
+          // .g-block__item
+          div.g-block__item(color='yellow')
+            div.g-block__item__front
+              img(src="../img/4.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/lilac/12.svg")
+          // .g-block__item
+          div.g-block__item(color='orange')
+            div.g-block__item__front
+              img(src="../img/5.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/blue/2.svg")
+          // .g-block__item
+          div.g-block__item(color='green')
+            div.g-block__item__front
+              img(src="../img/6.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/lilac/11.svg")
+          // .g-block__item
+          div.g-block__item(color='yellow').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/7.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/blue/10.svg")
+          // .g-block__item
+          div.g-block__item(color='lilac').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/8.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/yellow/10.svg")
+          // .g-block__item
+          div.g-block__item(color='blue').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/9.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/orange/11.svg")
+          // .g-block__item
+          div.g-block__item(color='yellow').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/10.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/green/6.svg")
+          // .g-block__item
+          div.g-block__item(color='orange').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/11.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/yellow/4.svg")
+          // .g-block__item
+          div.g-block__item(color='green').g-xs-hidden
+            div.g-block__item__front
+              img(src="../img/12.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/lilac/10.svg")
+          // .g-block__item
+          div.g-block__item(color='yellow').g-xs-hidden.g-md-hidden
+            div.g-block__item__front
+              img(src="../img/13.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/blue/10.svg")
+          // .g-block__item
+          div.g-block__item(color='lilac').g-xs-hidden.g-md-hidden
+            div.g-block__item__front
+              img(src="../img/14.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/green/7.svg")
+          // .g-block__item
+          div.g-block__item(color='blue').g-xs-hidden.g-md-hidden
+            div.g-block__item__front
+              img(src="../img/15.svg")
+            div.g-block__item__back
+              img(src="../img/introducao/yellow/9.svg")
+          // .g-block__item
         //- /.g-block
         section.g-block__overlay
           h2 Copa Cabeluda

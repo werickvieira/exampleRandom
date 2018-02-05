@@ -1,4 +1,5 @@
 import isMobile from './modulos/checkMobileDevice';
+import { defineBucketURL } from './modulos/util';
 
 // const k = require.context('../img/introducao/', true, /^\.\/.*\.svg/);
 
@@ -31,6 +32,7 @@ const setBackgroundImg = (arg, item) => {
   }
 };
 
+
 const randomBoxIntro = (itens) => {
   let isDiff = false;
   const range = mobile ? 2 : 5;
@@ -48,6 +50,7 @@ const randomBoxIntro = (itens) => {
       item !== undefined ? item.getAttribute('color') : null
     ));
 
+
     if (currColor === randomColor
       || mapSiblings.indexOf(randomColor) > -1
       || isArr.indexOf(randomItem) > -1) {
@@ -56,12 +59,28 @@ const randomBoxIntro = (itens) => {
     } else {
       isArr.push(randomItem);
       isDiff = true;
-      const imgURL = `img/introducao/${randomColor}/${Math.floor((Math.random() * 10) + 1)}.svg`;
+      const svgRandom = Math.floor((Math.random() * 10) + 1);
+      const imgURL = `${defineBucketURL(1)}/copa-cabeluda/img/introducao/${randomColor}/${svgRandom}.svg`;
       setBackgroundImg(imgURL, randomItem);
       randomItem.setAttribute('color', randomColor);
     }
   }
 };
+
+// Funcao simplificada
+// const randomBoxIntro = (itens) => {
+//   let isDiff = false;
+//   while (!isDiff) {
+//     const randomItem = itens[Math.floor((Math.random() * itens.length))];
+//     if (isArr.indexOf(randomItem) > -1) {
+//       isDiff = false;
+//     } else {
+//       isArr.push(randomItem);
+//       isDiff = true;
+//       randomItem.classList.add('g-block__item--random');
+//     }
+//   }
+// };
 
 const controlRandomBoxIntro = () => {
   randomBoxIntro(allItens);

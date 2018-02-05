@@ -18,16 +18,15 @@
           max-width: 256px;
           min-height: 190px;
           flex: 1 0 33%;
-          transition: background .3s ease-in-out;
+          transition: background .1s ease-in-out;
           will-change: transition;
           background-size: cover;
-          // background-color: black;
           @media(min-width:768px){
             min-width: 256px;
             min-height: 300px;
           }
-          &[data-img]{
-          }
+          // &[data-img]{
+          // }
           // &:nth-of-type(2){ 
           //   background-image: url("../img/1.svg")
           // }

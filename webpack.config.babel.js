@@ -14,12 +14,22 @@ const masterTemplate = {
   qa: './app/src/views/index.build.pug',
 };
 
+let URL;
+
+if (env === 'production') {
+  URL = s3URL;
+} else if (env === 'qa') {
+  URL = qaURL;
+} else {
+  URL = '';
+}
+
 const config = {
   entry: './app/src/js/index.js',
   output: {
     filename: 'bundle.js?[hash]',
     path: path.resolve(__dirname, 'public'),
-    publicPath: (env === 'production' ? s3URL : env === 'qa' ? qaURL : ''),
+    publicPath: URL,
   },
 
   module: {
@@ -28,44 +38,46 @@ const config = {
         test: /\.js$/,
         exclude: [/node_modules/],
         use: [{
-          loader: 'babel-loader'
-        }]
+          loader: 'babel-loader',
+        }],
       },
       {
         test: /\.(sass|scss)$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+          use: ['css-loader', 'sass-loader'],
+        }),
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        include: [ path.resolve(__dirname, "app/src/img")],
+        include: [path.resolve(__dirname, 'app/src/img')],
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[path][name].[ext]?[hash]',
               context: path.resolve(__dirname, 'app/src/'),
-              emitFile: true
-            }
+              emitFile: true,
+            },
           },
-        ]
+        ],
       },
       {
         test: /\.(pug)$/,
         use: [
-         'html-loader',
+          'html-loader',
           {
             loader: 'pug-html-loader',
             options: {
-              data: {},
+              data: {
+                s3Link: URL,
+              },
               pretty: true,
-            }
-          }
-        ]
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
 
 
@@ -74,11 +86,11 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, `${masterTemplate[env]}`),
       minify: {
-        removeComments: true
+        removeComments: true,
       },
-      inject: true
+      inject: true,
     }),
-    new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }])
+    new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }]),
   ],
   devtool: 'source-map',
   devServer: {
