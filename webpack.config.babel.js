@@ -36,7 +36,7 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/node_modules/],
+        // exclude: [/node_modules/],
         use: [{
           loader: 'babel-loader',
         }],
@@ -99,6 +99,7 @@ const config = {
     contentBase: path.resolve(__dirname, '/'),
     // compress: true,
     port: 8000,
+    host: '0.0.0.0',
     // inline: true
     // open: true
   },
