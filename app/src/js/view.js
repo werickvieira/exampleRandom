@@ -1,12 +1,15 @@
 import isMobile from './modulos/checkMobileDevice';
-import { defineBucketURL } from './modulos/util';
+// import { defineBucketURL } from './modulos/util';
+import images from './modulos/exportImages';
 
-// const k = require.context('../img/introducao/', true, /^\.\/.*\.svg/);
+// console.log('images', images);
 
-const isArr = [];
+let stopAnimation = false;
+// const isArr = [];
 const mobile = isMobile(700);
 const queryItens = mobile ? '.g-block__item:not(.g-xs-hidden)' : '.g-block__item';
 const allItens = document.querySelectorAll(queryItens);
+
 const setHeightMobile = () => {
   const winH = window.innerHeight;
   const cliH = document.querySelector('.g-block').clientHeight;
@@ -24,27 +27,27 @@ const getRange = () => {
   // const winW = window.innerWidth;
   const winW = document.querySelector('.g-intro').clientWidth;
   const itemW = allItens[0].clientWidth;
-  console.log('winW',winW);
-  console.log('itemW ', itemW )
+  // console.log('winW', winW);
+  // console.log('itemW ', itemW);
   const range = Math.floor(winW / itemW);
   return range;
 };
 
-const setBackgroundImg = (arg, item) => {
-  // if (!arg) {
-  //   allItens.forEach((el) => {
-  //     const attr = el.getAttribute('data-img');
-  //     el.style.backgroundImage = `url(${attr})`;
-  //   });
-  // } else {
-  item.style.backgroundImage = `url(${arg})`;
-  // }
-};
+// const setBackgroundImg = (arg, item) => {
+//   // if (!arg) {
+//   //   allItens.forEach((el) => {
+//   //     const attr = el.getAttribute('data-img');
+//   //     el.style.backgroundImage = `url(${attr})`;
+//   //   });
+//   // } else {
+//   item.style.backgroundImage = `url(${arg})`;
+//   // }
+// };
 
 const randomBoxIntro = (itens) => {
   let isDiff = false;
   const range = getRange();
-  console.log('range', range)
+  console.log('range', range);
   const colors = ['yellow', 'lilac', 'blue', 'orange', 'green'];
   while (!isDiff) {
     const randomItem = itens[Math.floor((Math.random() * itens.length))];
@@ -63,31 +66,29 @@ const randomBoxIntro = (itens) => {
     ));
 
     if (currColor === randomColor
-      || mapSiblings.indexOf(randomColor) > -1
-      || isArr.indexOf(randomItem) > -1) {
+      || mapSiblings.indexOf(randomColor) > -1) {
+      // || isArr.indexOf(randomItem) > -1
       // continue;
       isDiff = false;
       // console.log('-------RANDOM NOVAMENTE-------');
       // console.log('______________________________');
     } else {
-      isArr.push(randomItem);
+      // isArr.push(randomItem);
       isDiff = true;
       const svgRandom = Math.floor((Math.random() * 10) + 1);
-      const newImage = new Image();
-      newImage.onload = ({ target }) => {
-        const { src } = target;
-        setBackgroundImg(src, randomItem);
-        // console.log('COR REALMENTE DEFINIDA', randomColor);
-        // console.log('_________________________');
-      };
-      newImage.src = `${defineBucketURL(1)}/copa-cabeluda/img/introducao/${randomColor}/${svgRandom}.svg`;
+      console.log('stopAnimation', stopAnimation);
+      // const newImage = new Image();
+      // newImage.onload = ({ target }) => {
+      //   const { src } = target;
+      //   setBackgroundImg(src, randomItem);
+      //   // console.log('COR REALMENTE DEFINIDA', randomColor);
+      //   // console.log('_________________________');
+      // };
+      // newImage.src = `${defineBucketURL(1)}/copa-cabeluda/img/
+      // introducao/${randomColor}/${svgRandom}.svg`;
       randomItem.setAttribute('color', randomColor);
-      // console.log('COR A SER DEFINIDA', randomColor);
-      // console.log('_________________________');
-      // const imgURL = `${defineBucketURL(1)}
-      // /copa-cabeluda/img/introducao/${randomColor}/${svgRandom}.svg`;
-      // setBackgroundImg(imgURL, randomItem);
-      // randomItem.setAttribute('color', randomColor);
+      const imgTarget = randomItem.querySelector('img');
+      imgTarget.setAttribute('src', images[`./introducao/${randomColor}/${svgRandom}.svg`]);
     }
   }
 };
@@ -114,7 +115,8 @@ const controlRandomBoxIntro = () => {
 };
 
 const initIntro = () => {
-  if (isArr.length <= 4) {
+  if (!stopAnimation) {
+    console.log("exec!!!");
     setTimeout(controlRandomBoxIntro, 1000);
     // window.requestAnimationFrame(controlRandomBoxIntro);
   }

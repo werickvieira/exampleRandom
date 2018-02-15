@@ -1,7 +1,7 @@
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
+// import CopyWebpackPlugin from 'copy-webpack-plugin';
 import configs from './app/config';
 
 const env = process.env.NODE_ENV || 'development';
@@ -70,7 +70,7 @@ const config = {
             loader: 'pug-html-loader',
             options: {
               data: {
-                s3Link: URL,
+                // s3Link: URL,
               },
               pretty: true,
             },
@@ -90,7 +90,7 @@ const config = {
       },
       inject: true,
     }),
-    new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }]),
+    // new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }]),
   ],
   devtool: 'source-map',
   devServer: {

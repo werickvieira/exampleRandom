@@ -22,16 +22,17 @@
           min-width: 160px;
           //- max-width: 256px;
           min-height: 190px;
-          flex: 1 0 auto; // 33% basis
-          transition: background-image .1s ease-in-out;
-          will-change: transition;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
+          flex: 1 0 0; // 33% basis
+          // transition: background-image .1s ease-in-out;
+          // will-change: transition;
+          // background-size: cover;
+          // background-position: center;
+          // background-repeat: no-repeat;
           @media(min-width:768px){
             min-width: 256px;
             min-height: 300px;
             max-height: 318px;
+            flex-basis: auto;
           }
           @media(min-width:600px) and (max-width:767px) and (orientation: landscape) {
             height: auto !important;
