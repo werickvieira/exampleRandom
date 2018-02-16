@@ -1,4 +1,4 @@
-
+import '../../src/sass/main.scss';
 import csvToJSON from './modulos/getcsv';
 import initView from './view';
 import initRandom from './random';
@@ -9,7 +9,4 @@ const initApp = () => {
     .then(initView);
 };
 
-
-export {
-  initApp as default,
-};
+initApp();

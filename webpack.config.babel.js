@@ -25,7 +25,7 @@ if (env === 'production') {
 }
 
 const config = {
-  entry: './app/src/js/index.js',
+  entry: './app/src/js/app.js',
   output: {
     filename: 'bundle.js?[hash]',
     path: path.resolve(__dirname, 'public'),

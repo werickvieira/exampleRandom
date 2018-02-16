@@ -30,7 +30,7 @@ const randomAssociate = (currAssociate, allItens) => {
     })
   ));
 
-  if (counter >= 1000) {
+  if (counter >= 100) {
     counter = 0;
     return randomItens(allItens, 2);
   } else if (isCharacter.length <= 0) {
@@ -46,8 +46,8 @@ const findAssociate = (curr, itens, obj) => {
   if (!value) {
     findAssociate(curr, itens, obj);
   } else {
-    obj[curr.correctAnswer] = [];
-    obj[curr.correctAnswer].push(shuffle(value.concat(curr)));
+    obj[curr.jogador] = [];
+    obj[curr.jogador].push(shuffle(value.concat(curr)));
   }
 };
 

@@ -24,6 +24,30 @@ main{
 [color="orange"]{ background-color: $orange }
 [color="green"]{ background-color: $green }
 
+.g-button{
+  width: 100%;
+  max-width: 230px;
+  min-height: 40px;
+  background-color: #fff;
+  cursor: pointer;
+  display: block;
+  user-select:none;
+  padding: 0;
+  &.g-button-text{
+    @include set-font(23px, $fl, #474848);
+    text-transform: uppercase;
+  }
+  &:active,
+  &:focus,
+  &:hover{
+    outline: 0;
+    background: #fff;
+  }
+}
+
+.g-text-center{
+  text-align: center;
+};
 
 // Revisar esse código
 body{
