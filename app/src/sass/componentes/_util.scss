@@ -3,6 +3,7 @@ body,
 #infoarte,
 main{
 	height: 100%;
+  min-height: 100%;
 }
 .g-container{
 	max-width: $widthContainer;
@@ -23,6 +24,9 @@ main{
 [color="blue"]{ background-color: $blue }
 [color="orange"]{ background-color: $orange }
 [color="green"]{ background-color: $green }
+[hidden]{
+  display: none !important;
+}
 
 .g-button{
   width: 100%;

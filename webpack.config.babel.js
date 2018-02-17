@@ -1,27 +1,26 @@
 import path from 'path';
+import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 // import CopyWebpackPlugin from 'copy-webpack-plugin';
 import configs from './app/config';
 
 const env = process.env.NODE_ENV || 'development';
-
 const { s3URL, qaURL } = configs;
-
 const masterTemplate = {
   development: './app/src/views/index.pug',
   production: './app/src/views/index.build.pug',
   qa: './app/src/views/index.build.pug',
 };
 
-let URL;
+let URL_PATH;
 
 if (env === 'production') {
-  URL = s3URL;
+  URL_PATH = s3URL;
 } else if (env === 'qa') {
-  URL = qaURL;
+  URL_PATH = qaURL;
 } else {
-  URL = '';
+  URL_PATH = '';
 }
 
 const config = {
@@ -29,7 +28,7 @@ const config = {
   output: {
     filename: 'bundle.js?[hash]',
     path: path.resolve(__dirname, 'public'),
-    publicPath: URL,
+    publicPath: URL_PATH,
   },
 
   module: {
@@ -89,6 +88,9 @@ const config = {
         removeComments: true,
       },
       inject: true,
+    }),
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify(URL_PATH),
     }),
     // new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }]),
   ],

@@ -1,16 +1,11 @@
+// const images = {
+
+// };
+
 // function importAll(r) {
-//   return r.keys().map(r);
+//   r.keys().forEach((key) => { images[key] = r(key); });
 // }
-// export default importAll(require.context('../../img/', true));
 
-const images = {
+// importAll(require.context('../../img/', true));
 
-};
-
-function importAll(r) {
-  r.keys().forEach((key) => { images[key] = r(key); });
-}
-
-importAll(require.context('../../img/', true));
-
-export default images;
+// export default images;

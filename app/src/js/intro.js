@@ -1,17 +1,19 @@
 import isMobile from './modulos/checkMobileDevice';
-import images from './modulos/exportImages';
+// import images from './modulos/exportImages';
 // import { defineBucketURL } from './modulos/util';
 
+console.log('API_URL', API_URL);
 const elIntro = document.querySelector('.g-intro');
 let stopAnimation = false;
 // const isArr = [];
 const mobile = isMobile(700)
-const queryItens = mobile ? '.g-block__item:not(.g-xs-hidden)' : '.g-block__item';
+// const queryItens = mobile ? '.g-block__item:not(.g-xs-hidden)' : '.g-block__item';
+const queryItens = '.g-block__item';
 const allItens = document.querySelectorAll(queryItens);
 
-// const setHeightMobile = () => {
+// const setHeight = () => {
 //   const winH = window.innerHeight;
-//   const cliH = document.querySelector('.g-block').clientHeight;
+//   const cliH = document.querySelector('.g-intro').clientHeight;
 //   const minH = 190;
 //   const diff = winH - cliH;
 //   if (diff > 0) {
@@ -25,7 +27,19 @@ const allItens = document.querySelectorAll(queryItens);
 const getRange = () => {
   const winW = elIntro.clientWidth;
   const itemW = allItens[0].clientWidth;
-  return Math.ceil(winW / itemW);
+  return Math.floor(winW / itemW);
+};
+
+const hiddenElementsIntro = () => {
+  const target = document.querySelector('#infoarte');
+  const winH = target.clientHeight;
+  [...allItens].forEach((item) => {
+    const offsetTop = item.offsetTop;
+    if (offsetTop > winH) {
+      // console.log('item', item)
+      item.setAttribute('hidden', '');
+    } 
+  })
 };
 
 // const setBackgroundImg = (arg, item) => {
@@ -73,11 +87,15 @@ const randomBoxIntro = (itens) => {
         // setBackgroundImg(src, randomItem);
         // console.log('COR REALMENTE DEFINIDA', randomColor);
         // console.log('_________________________');
-        randomItem.querySelector('img').setAttribute('src', images[`./introducao/${randomColor}/${svgRandom}.svg`]);
+        // randomItem.querySelector('img').setAttribute('src', images[`./introducao/${randomColor}/${svgRandom}.svg`]);
+        randomItem.querySelector('img').setAttribute('src', `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`);
       };
       // newImage.src = `${defineBucketURL(1)}/copa-cabeluda/img/introducao/${randomColor}/${svgRandom}.svg`;
+
+      // newImage.src = images[`./introducao/${randomColor}/${svgRandom}.svg`];
+      newImage.src = `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`;
       randomItem.setAttribute('color', randomColor);
-      newImage.src = images[`./introducao/${randomColor}/${svgRandom}.svg`];
+      
     }
   }
 };
@@ -96,13 +114,23 @@ const initIntro = () => {
   }
 };
 
+
 const funStopAnimation = () => {
   stopAnimation = !stopAnimation;
   // console.log('stopAnimation', stopAnimation)
   // window.cancelAnimationFrame(initIntro);
 };
 
+const resizeElementsIntro = () => {
+  [...allItens].forEach((item) => {
+    item.removeAttribute('hidden');
+  })
+  hiddenElementsIntro();
+};
+
 export {
   initIntro as default,
-  funStopAnimation
+  funStopAnimation,
+  hiddenElementsIntro,
+  resizeElementsIntro
 };
