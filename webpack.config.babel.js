@@ -90,7 +90,7 @@ const config = {
       inject: true,
     }),
     new webpack.DefinePlugin({
-      API_URL: JSON.stringify(URL_PATH),
+      API_URL: JSON.stringify(s3URL),
     }),
     // new CopyWebpackPlugin([{ from: './app/src/img', to: 'img' }]),
   ],

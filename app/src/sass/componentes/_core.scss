@@ -1,42 +1,20 @@
 
 #infoarte{
   main{
-    @media(min-width:992px){
-      // display: flex;
-      // align-items: center;
-      // justify-content: center;
-    }    
-    @media(min-width:1440px){
-      // display: flex;
-      // align-items: center;
-      // justify-content: center;
-    }
-    .g-intro{
-      // height: 100%;
-      // overflow: hidden;
+    .g-intro {
+      height: 100%;
       .g-block{
         display: flex;
         width: auto;
+        height: 100%;
         flex-flow: wrap row;
-        // margin-right: -10px;
-        // margin-left: -10px;
         .g-block__item{
           min-width: 160px;
-          //- max-width: 256px;
           min-height: 190px;
-          flex: 1 0 0; // 33% basis
-          // transition: background-image .1s ease-in-out;
-          // will-change: transition;
-          // background-size: cover;
-          // background-position: center;
-          // background-repeat: no-repeat;
-          // display: flex;
-          // justify-content: center;
-          // align-items: center;
+          flex: 1 0 0;
           @media(min-width:768px){
             min-width: 256px;
             min-height: 300px;
-            // max-height: 318px;
             flex-basis: auto;
           }
           @media(min-width:600px) and (max-width:767px) and (orientation: landscape) {
@@ -45,66 +23,13 @@
           img {
             width: 100%;
           }
-          // &[data-img]{
-          // }
-          // &:nth-of-type(2){ 
-          //   background-image: url("../img/1.svg")
-          // }
-          // @media(min-width:768px) and (max-width:992px){
-          //   &:nth-of-type(4) { order:1;}
-          //   &:nth-of-type(8) { order:2;}
-          //   &:nth-of-type(12){ order:3;}
-          // }
-          // &:nth-of-type(1){ background-color: $yellow }
-          // &:nth-of-type(2){ background-color: $lilac }
-          // &:nth-of-type(3){ background-color: $blue }
-          // &:nth-of-type(4){ background-color: $yellow }
-          // &:nth-of-type(5){ background-color: $orange }
-          // &:nth-of-type(6){ background-color: $green }
-          // &:nth-of-type(7){ background-color: $yellow }
-          // &:nth-of-type(8){ background-color: $lilac }
-          // &:nth-of-type(9){ background-color: $blue }
-          // &:nth-of-type(10){ background-color: $yellow }
-          // &:nth-of-type(11){ background-color: $orange }
-          // &:nth-of-type(12){ background-color: $green }
-          // &:nth-of-type(13){ background-color: $yellow }
-          // &:nth-of-type(14){ background-color: $lilac }
-          // &:nth-of-type(15){ background-color: $blue }
-          // &.g-xs-hidden{
-          //   display: none;
-          //   @media(min-width:600px) and (max-width:767px) and (orientation: landscape) {
-          //     &:nth-of-type(7),
-          //     &:nth-of-type(8) {
-          //       //-background: red !important;
-          //       display: block;
-          //     }
-          //   }
-          //   &.g-sm-hidden{
-          //     @media(min-width:768px) and (max-width:1024px){
-          //       display: block;
-          //     }
-          //   }
-
-          //   &.g-md-hidden{
-          //     @media(min-width:1200px) and (max-width:1366px){
-          //       display: block;
-          //     }
-          //   }
-          //   &.g-xs-hidden{
-          //     @media(min-width:1367px){
-          //       display: block;
-          //     }
-          //   }
-          // }
         }
       }
       .g-block__overlay{
         position: absolute;
         width: 100%;
         max-width: 440px;
-        // min-height: 190px;
         height: auto;
-        // border: 2px solid #fff;
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
@@ -118,7 +43,6 @@
         }
         .g-title{
           text-transform: uppercase;
-          // text-align: center;
           line-height: .8;
           text-shadow: 2px 3px 1px rgbA(6, 7, 7,.2);
           .g-title__light{
@@ -142,9 +66,6 @@
             padding-top: 25px;
             padding-bottom: 50px;
           }
-        }
-        button{
-
         }
       }
     }

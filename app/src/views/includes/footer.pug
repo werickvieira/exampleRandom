@@ -1,0 +1,14 @@
+// VERIFICAR A SOLUCAO DO BABEL
+script(type='text/javascript',async).
+  function polyfillPromise(){
+    if (typeof(window.Promise) === 'undefined') {
+      var script = document.createElement('script');
+      script.setAttribute('type', 'text/javascript'); 
+      script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.0/bluebird.min.js');
+      script.onload = function() {
+        window.Promise = P;
+      }
+      document.getElementsByTagName('head')[0].appendChild(script);
+    }
+  };
+  polyfillPromise();
