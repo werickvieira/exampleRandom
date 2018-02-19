@@ -49,6 +49,7 @@ const randomBoxIntro = (itens) => {
       isDiff = false;
     } else {
       isDiff = true;
+      randomItem.setAttribute('color', randomColor);
       const svgRandom = Math.floor((Math.random() * 10) + 1);
       const newImage = new Image();
       newImage.onload = ({ target }) => {
@@ -56,13 +57,14 @@ const randomBoxIntro = (itens) => {
         randomItem.querySelector('img').setAttribute('src', `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`);
       };
       newImage.src = `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`;
-      randomItem.setAttribute('color', randomColor);
+      // randomItem.setAttribute('color', randomColor);
     }
   }
 };
 
 const controlRandomBoxIntro = () => {
-  randomBoxIntro(allItens);
+  const elements = document.querySelectorAll('.g-block__item:not([hidden])');
+  randomBoxIntro(elements);
   window.requestAnimationFrame(initIntro);
 };
 
@@ -76,18 +78,29 @@ const initIntro = () => {
 
 const funStopAnimation = () => {
   stopAnimation = !stopAnimation;
+  window.cancelAnimationFrame(initIntro);
 };
 
-const resizeElementsIntro = () => {
+const resizeElementsIntro = (cb) => {
   [...allItens].forEach((item) => {
     item.removeAttribute('hidden');
   })
-  hiddenElementsIntro();
+  cb();
 };
+
+// Método para ajuste em dev 
+window.addEventListener('resize', ({ target }) => {
+  const { innerWidth } = target;
+  console.log('mobile', mobile)
+  console.log('innerWidth', innerWidth)
+  if (innerWidth > 767) {
+    console.log('permitido')
+    resizeElementsIntro(hiddenElementsIntro);
+  }
+});
 
 export {
   initIntro as default,
   funStopAnimation,
   hiddenElementsIntro,
-  resizeElementsIntro
 };
