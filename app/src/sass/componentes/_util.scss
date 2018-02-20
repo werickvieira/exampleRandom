@@ -48,6 +48,10 @@ main{
   text-align: center;
 };
 
+.g-height-auto {
+  height: auto !important;
+}
+
 // Revisar esse código
 body{
   &.g-overflow{
@@ -62,6 +66,7 @@ body{
   }
   .head-materia{
     height: 0;
+    margin:0;
     overflow: hidden;
   }
   #all_banner{
@@ -72,12 +77,19 @@ body{
     background: none  !important;
     margin: 0  !important;
   }
-  article
-  & + .row{
-    display: none;
-  }
-  &.row:nth-child(1){
-    display: none;
+  article {
+    max-width: 100%;
+    height: 100%;
+    position: relative !important;
+    & + .row{
+      display: none;
+    }
+    &.row:nth-child(1){
+      display: none;
+    }
+    & ~ footer {
+      margin: 0 !important;
+    }
   }
 }
 

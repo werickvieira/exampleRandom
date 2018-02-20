@@ -158,7 +158,6 @@ const converteDadosPlanilha = (e) => {
   return RETORNO;
 };
 
-
 export {
   converteDadosPlanilha,
   removeAcentos,

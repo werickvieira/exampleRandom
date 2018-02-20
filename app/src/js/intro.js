@@ -1,6 +1,7 @@
 import isMobile from './modulos/checkMobileDevice';
 // import images from './modulos/exportImages';
 
+const article = document.querySelector('article');
 const main = document.querySelector('#infoarte');
 const allItens = document.querySelectorAll('.g-block__item');
 const mobile = isMobile(700)
@@ -12,11 +13,8 @@ const getRange = () => {
   return Math.floor(winW / itemW);
 };
 
-/*
-  Lógica aplicada:
-  O container (#infoarte), deverá conter 100% da largura de qualquer device,
-  qualquer elemento que ultrapasse a altura do container, deverá receber o attributo hidden;
-*/
+
+
 const hiddenElementsIntro = () => {
   const winH = main.clientHeight;
   [...allItens].forEach((item) => {
@@ -25,11 +23,13 @@ const hiddenElementsIntro = () => {
       item.setAttribute('hidden', '');
     } 
   })
+  article ? article.classList.add('g-height-auto') :  '';
 };
 
 const randomBoxIntro = (itens) => {
   let isDiff = false;
   const range = getRange();
+  // console.log('range', range);
   const colors = ['yellow', 'lilac', 'blue', 'orange', 'green'];
   while (!isDiff) {
     const randomItem = itens[Math.floor((Math.random() * itens.length))];
@@ -49,15 +49,14 @@ const randomBoxIntro = (itens) => {
       isDiff = false;
     } else {
       isDiff = true;
-      randomItem.setAttribute('color', randomColor);
       const svgRandom = Math.floor((Math.random() * 10) + 1);
       const newImage = new Image();
       newImage.onload = ({ target }) => {
         const { src } = target;
+        randomItem.setAttribute('color', randomColor);
         randomItem.querySelector('img').setAttribute('src', `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`);
       };
       newImage.src = `${API_URL}img/introducao/${randomColor}/${svgRandom}.svg`;
-      // randomItem.setAttribute('color', randomColor);
     }
   }
 };
@@ -79,6 +78,7 @@ const initIntro = () => {
 const funStopAnimation = () => {
   stopAnimation = !stopAnimation;
   window.cancelAnimationFrame(initIntro);
+  window.removeEventListener(resizeEvent);
 };
 
 const resizeElementsIntro = (cb) => {
@@ -88,16 +88,19 @@ const resizeElementsIntro = (cb) => {
   cb();
 };
 
-// Método para ajuste em dev 
-window.addEventListener('resize', ({ target }) => {
+const resizeEvent = ({ target }) => {
   const { innerWidth } = target;
   console.log('mobile', mobile)
   console.log('innerWidth', innerWidth)
-  if (innerWidth > 767) {
+  if (innerWidth > 700 && !mobile) {
     console.log('permitido')
+    article ? article.classList.remove('g-height-auto') :  '';
     resizeElementsIntro(hiddenElementsIntro);
   }
-});
+};
+
+// Não válido para mobile
+window.addEventListener('resize', resizeEvent);
 
 export {
   initIntro as default,

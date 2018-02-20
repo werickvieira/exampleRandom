@@ -9,6 +9,7 @@ const initView = (data) => {
   console.log('data', data[0]);
 };
 
+
 export {
   initView as default,
 };
